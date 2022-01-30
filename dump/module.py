@@ -75,11 +75,9 @@ class Dump(commands.Cog):
 
             writer.dump(csv)
 
-            chart = grapher.graph.graph(csv)
+            chart = grapher.graph.graph(csv, content)
 
-            # TODO This may be broken when the tool changes.
-            # Which it may, because this is not pretty workaround.
-            timespan = chart.title.split("\n")[1]
+            timespan = chart.title
             chart.title = f"{content}, {ctx.author.name}, {ctx.guild.name}\n{timespan}"
 
             chart.render_to_png(str(png))
