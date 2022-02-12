@@ -5,7 +5,7 @@ from typing import Optional
 import nextcord
 from nextcord.ext import commands
 
-from pie import exceptions, i18n, logger, utils
+from pie import check, exceptions, i18n, logger, utils
 
 import grapher
 
@@ -35,12 +35,14 @@ class Dump(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @check.acl2(check.ACLevel.MEMBER)
     @commands.max_concurrency(1, per=commands.BucketType.default, wait=False)
     @commands.group(name="db-dump")
     async def dbdump_(self, ctx):
         """Display long-term bot usage statistics."""
         await utils.discord.send_help(ctx)
 
+    @check.acl2(check.ACLevel.MEMBER)
     @dbdump_.command(name="options")
     async def dbdump_options(self, ctx):
         """Display which data are available."""
@@ -57,6 +59,7 @@ class Dump(commands.Cog):
         )
 
     @commands.cooldown(rate=3, per=60, type=commands.BucketType.user)
+    @check.acl2(check.ACLevel.MEMBER)
     @dbdump_.command(name="get")
     async def dbdump_get(
         self,
@@ -126,6 +129,7 @@ class Dump(commands.Cog):
         png.unlink()
 
     @commands.cooldown(rate=3, per=60, type=commands.BucketType.user)
+    @check.acl2(check.ACLevel.MEMBER)
     @dbdump_.command(name="compare")
     async def dbdump_compare(
         self,
