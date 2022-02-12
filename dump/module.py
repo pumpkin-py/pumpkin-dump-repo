@@ -35,6 +35,7 @@ class Dump(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.guild_only()
     @check.acl2(check.ACLevel.MEMBER)
     @commands.max_concurrency(1, per=commands.BucketType.default, wait=False)
     @commands.group(name="db-dump")
