@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 from typing import Optional
 
-import nextcord
-from nextcord.ext import commands
+import discord
+from discord.ext import commands
 
 from pie import check, exceptions, i18n, logger, utils
 
@@ -122,9 +122,7 @@ class Dump(commands.Cog):
             chart.render_to_png(str(png))
 
             with png.open("rb") as handle:
-                await ctx.reply(
-                    file=nextcord.File(fp=handle, filename=f"{content}.png")
-                )
+                await ctx.reply(file=discord.File(fp=handle, filename=f"{content}.png"))
 
         csv.unlink()
         png.unlink()
@@ -136,9 +134,9 @@ class Dump(commands.Cog):
         self,
         ctx,
         content: str,
-        member1: nextcord.Member,
-        member2: Optional[nextcord.Member] = None,
-        member3: Optional[nextcord.Member] = None,
+        member1: discord.Member,
+        member2: Optional[discord.Member] = None,
+        member3: Optional[discord.Member] = None,
     ):
         """Compare your statistics with up to three other members."""
         if content not in grapher.extract.CONTENT:
@@ -175,13 +173,11 @@ class Dump(commands.Cog):
             chart.render_to_png(str(png))
 
             with png.open("rb") as handle:
-                await ctx.reply(
-                    file=nextcord.File(fp=handle, filename=f"{content}.png")
-                )
+                await ctx.reply(file=discord.File(fp=handle, filename=f"{content}.png"))
 
         csv.unlink()
         png.unlink()
 
 
-def setup(bot) -> None:
-    bot.add_cog(Dump(bot))
+async def setup(bot) -> None:
+    await bot.add_cog(Dump(bot))
