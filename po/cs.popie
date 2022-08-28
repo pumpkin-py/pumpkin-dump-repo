@@ -1,0 +1,14 @@
+msgid `pumpkin-dump-tool` can decode several types of information. I may not have them all, though, if they are managed by some other bot.
+msgstr Nástroj `pumpkin-dump-tool` umí dekódovat různé typy informací. Já je nemusím podporovat všechny, některé mohou být součástí jiných botů.
+
+msgid The supported types of content are:
+msgstr Podporované typy obsahu jsou:
+
+msgid I don't know how to show this kind of data.
+msgstr Nevím jak takový typ dat ukázat.
+
+msgid I don't know how to display the second type of content.
+msgstr Nevím jak zobrazit druhý typ dat.
+
+msgid I don't know how to display the third type of content.
+msgstr Nevím jak zobrazit třetí typ dat.
