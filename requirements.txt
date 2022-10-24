@@ -1,1 +1,1 @@
-git+ssh://github.com/pumpkin-py/pumpkin-dump-tool.git@v0.0.6
+git+ssh://github.com/pumpkin-py/pumpkin-dump-tool.git@v0.0.7
